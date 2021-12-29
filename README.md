@@ -37,3 +37,34 @@ In the following screenshot you can see (and try it yourself, by executing the a
     Output is shown **as expected** and the **time** needed to render is way **similar** to the original `column` one.
 
 ![Example output](https://user-images.githubusercontent.com/33452387/147603917-5cfaafe1-7d21-4436-a2f7-b7d91ef58e7c.png)
+
+# Other projects
+## NORMAN GEIST - `ccolumn`
+Very spartan project written entirely in **Bash** which works but it is very slow... It is the project that led me to the `Perl` solution.
+
+#### Pro
+- Works without a bug (tested)
+
+#### Cons
+- Very slow since it uses Bash `read` command in a loop (see [this answer](https://stackoverflow.com/a/13764233/8965861) for more info)
+
+### Links
+- [Author](https://stackoverflow.com/users/5871407/norman-geist)
+- [Project](https://stackoverflow.com/a/38762316/8965861)
+
+
+## SandersJ16 - `ccolumn`
+Very good project written entirely in **Bash** which has some similarities with the original `column` command, yet handles colors.
+
+#### Pro
+- Has both `fill by rows` and `fill by columns` options from the original `column` command;
+- Allows to choose whether or not to print colors
+- Has an option to print empty lines too
+
+#### Cons
+- Very slow since it uses Bash `read` command in a loop (see [this answer](https://stackoverflow.com/a/13764233/8965861) for more info)
+- Possibly slower than `column2` (not tested)
+
+### Links
+- [Author](https://github.com/SandersJ16)
+- [Project](https://github.com/SandersJ16/Bash-Better-Column-Command)
