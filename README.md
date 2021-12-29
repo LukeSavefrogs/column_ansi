@@ -34,6 +34,12 @@ column_ansi --help
 - Same **syntax** and parameters as `column` (see `column_ansi --help` for more info)
 - **Right, Left and even Center alignment** for every column (1-based)!
 
+## TODO
+- Add option to keep or skip empty lines (right now it keeps them, which is different from the default behaviour of `column`);
+- Add option to remove colors and control characters from the output;
+- Make the choice of right/center alignment _explicit_ (so one cannot pass the same column index to both options)
+- _Feel free to suggest anything in the [Issue](https://github.com/LukeSavefrogs/column_ansi/issues) section..._ 😃
+
 ## Description
 I needed to format a very long awk-generated colored output (more than 300 lines) into a nice table.
 I first thought of using `column`, but as i discovered it didn't take into consideration ANSI characters, since the output would come out not aligned.
