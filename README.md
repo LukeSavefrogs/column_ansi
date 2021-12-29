@@ -1,4 +1,5 @@
-# column_ansi - `column` with support for ANSI color codes
+# column_ansi
+### Perl version of `column` with support for ANSI color codes
 ## Features
 - Support for ANSI color codes and characters (output is aligned)
 - Same syntax and parameters as `column` (see `column_ansi --help` for more info)
