@@ -6,7 +6,7 @@
 column_ansi () {
 	(
 		local __name="${FUNCNAME[0]}";
-		local __version="1.0.0";
+		local __version="1.2.0";
 
 		__main () {
 			local _input_separator=" ";
