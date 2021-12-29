@@ -1,5 +1,6 @@
-# column_ansi
+# ANSI-compatible `column`: `column_ansi`
 `Perl` version of `column` with support for ANSI color codes
+
 ## Syntax
 ```shell
 column_ansi [-s SEPARATOR] [-o SEPARATOR] [-R COLUMNS] [-C COLUMNS]
