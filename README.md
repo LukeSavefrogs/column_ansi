@@ -1,8 +1,9 @@
 # column_ansi
 `Perl` version of `column` with support for ANSI color codes
 ## Syntax
-```
-column_ansi [-s SEPARATOR] [-o SEPARATOR] [-R COLUMNS]
+```shell
+column_ansi [-s SEPARATOR] [-o SEPARATOR] [-R COLUMNS] [-C COLUMNS]
+column_ansi --help
 ```
 
 ## Options
@@ -18,6 +19,10 @@ column_ansi [-s SEPARATOR] [-o SEPARATOR] [-R COLUMNS]
 
 -R COLUMNS, --table-right COLUMNS
         Right align text in the specified columns (comma-separated).
+
+-C COLUMNS, --table-center COLUMNS
+        Center align text in the specified columns (comma-separated). 
+        This option is not present in the original column command.
 
 -h, --help
         Display help text and exit.
