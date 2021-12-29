@@ -210,6 +210,7 @@ column_ansi () {
 			printf "\n";
 			printf "${__indent_1}${__red}-C${__reset} ${__underlined}COLUMNS${__reset}, ${__red}--table-center${__reset} ${__underlined}COLUMNS${__reset}\n";
 			printf "${__indent_2}Center align text in the specified columns (comma-separated).\n";
+			printf "${__indent_2}This option is not present in the original column command.\n";
 			printf "\n";
 			printf "${__indent_1}${__red}-h${__reset}, ${__red}--help${__reset}\n";
 			printf "${__indent_2}Display help text and exit.\n";
