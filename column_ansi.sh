@@ -135,6 +135,7 @@ column_ansi () {
 
 			unset PCOLUMN_INPUT_SEPARATOR;
 			unset PCOLUMN_OUTPUT_SEPARATOR;
+			unset PCOLUMN_ALIGN_RIGHT;
 		}
 
 		# shellckeck disable=SC2059
