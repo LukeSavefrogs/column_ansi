@@ -2,7 +2,7 @@
 
 # For the tests to work we need the function `column_ansi` available from the downloaded script.
 # Sourcing won't execute the function 
-source "./column_ansi.sh" || exit 1;
+source "../column_ansi.sh" || exit 1;
 
 # @description:    Bash version of column (similar to the one from util-linux) which works with color codes
 # @author:         NORMAN GEIST
