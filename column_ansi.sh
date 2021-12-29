@@ -191,7 +191,7 @@ column_ansi () {
 			printf "\n";
 			
 			printf "${__bold}USAGE${__reset}:\n"
-			printf "${__indent_1}${__yellow}%s${__reset} [-s ${__underlined}SEPARATOR${__reset}] [-o ${__underlined}SEPARATOR${__reset}] [-R ${__underlined}COLUMNS${__reset}]\n" "${__name}";
+			printf "${__indent_1}${__yellow}%s${__reset} [-s ${__underlined}SEPARATOR${__reset}] [-o ${__underlined}SEPARATOR${__reset}] [-R ${__underlined}COLUMNS${__reset}] [-C ${__underlined}COLUMNS${__reset}]\n" "${__name}";
 			printf "${__indent_1}${__yellow}%s${__reset} --help\n" "${__name}";
 			printf "\n";
 			
