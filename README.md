@@ -1,16 +1,32 @@
 # column_ansi
-### Perl version of `column` with support for ANSI color codes
+`Perl` version of `column` with support for ANSI color codes
+## Syntax
+```
+column_ansi [-s SEPARATOR] [-o SEPARATOR] [-R COLUMNS]
+```
+
+## Options
+```
+-t, --table
+        Does nothing, was left for compatibility reasons. [DEFAULT]
+
+-s SEPARATOR, --separator SEPARATOR
+        Specify the possible input item delimiters (default is whitespace).
+
+-r SEPARATOR, --output-separator SEPARATOR
+        Specify the columns delimiter for table output (default is two spaces).
+
+-R COLUMNS, --table-right COLUMNS
+        Right align text in the specified columns (comma-separated).
+
+-h, --help
+        Display help text and exit.
+```
+
 ## Features
 - Support for **ANSI color** codes and characters (output is aligned)
 - Same **syntax** and parameters as `column` (see `column_ansi --help` for more info)
 - **Right/Left alignment** for every column (1-based)
-
-## Screenshots
-#### Comparison with `column` command
-![Comparison with column](https://user-images.githubusercontent.com/33452387/147605328-e786c713-afdb-4913-ab77-652098935b45.png)
-
-#### Help page
-![Help page](https://user-images.githubusercontent.com/33452387/147606019-40c42e9e-ed65-4b7c-93a5-bd92a293afee.png)
 
 ## Description
 I needed to format a very long awk-generated colored output (more than 300 lines) into a nice table.
@@ -21,6 +37,14 @@ After searching a bit on Google i found [this interesting answer](https://stacko
 It was all good, but it was taking way too long to load... In the attached tests `test_column_ansi.sh` you will find that even for 2 lines `column2` (the one i found on SO) takes up to 2-3 seconds (which is a lot in comparison to the 0.0xx seconds of the original `column`)!
 
 After trying out this version in my production script the time used to display data **dropped from 30s to <1s**!!
+
+
+## Screenshots
+#### Comparison with `column` command
+![Comparison with column](https://user-images.githubusercontent.com/33452387/147605328-e786c713-afdb-4913-ab77-652098935b45.png)
+
+#### Help page
+![Help page](https://user-images.githubusercontent.com/33452387/147606019-40c42e9e-ed65-4b7c-93a5-bd92a293afee.png)
 
 ## Tests
 In the following screenshot you can see (and try it yourself, by executing the attached `test_column_ansi.sh` script) 4 tests with the corresponding timings:
