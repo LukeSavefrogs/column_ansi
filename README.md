@@ -1,9 +1,9 @@
 # column_ansi
 ### Perl version of `column` with support for ANSI color codes
 ## Features
-- Support for ANSI color codes and characters (output is aligned)
-- Same syntax and parameters as `column` (see `column_ansi --help` for more info)
-- Right/Left alignment for every column (1-based)
+- Support for **ANSI color** codes and characters (output is aligned)
+- Same **syntax** and parameters as `column` (see `column_ansi --help` for more info)
+- **Right/Left alignment** for every column (1-based)
 
 ## Screenshots
 #### Comparison with `column` command
@@ -12,7 +12,7 @@
 #### Help page
 ![Help page](https://user-images.githubusercontent.com/33452387/147606019-40c42e9e-ed65-4b7c-93a5-bd92a293afee.png)
 
-## Why
+## Description
 I needed to format a very long awk-generated colored output (more than 300 lines) into a nice table.
 I first thought of using `column`, but as i discovered it didn't take into consideration ANSI characters, since the output would come out not aligned.
 
