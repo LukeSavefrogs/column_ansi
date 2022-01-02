@@ -202,7 +202,7 @@ column_ansi () {
 			printf "${__indent_1}${__red}-s${__reset} ${__underlined}SEPARATOR${__reset}, ${__red}--separator${__reset} ${__underlined}SEPARATOR${__reset}\n";
 			printf "${__indent_2}Specify the possible input item delimiters (default is whitespace).\n";
 			printf "\n";
-			printf "${__indent_1}${__red}-r${__reset} ${__underlined}SEPARATOR${__reset}, ${__red}--output-separator${__reset} ${__underlined}SEPARATOR${__reset}\n";
+			printf "${__indent_1}${__red}-o${__reset} ${__underlined}SEPARATOR${__reset}, ${__red}--output-separator${__reset} ${__underlined}SEPARATOR${__reset}\n";
 			printf "${__indent_2}Specify the columns delimiter for table output (default is two spaces).\n";
 			printf "\n";
 			printf "${__indent_1}${__red}-R${__reset} ${__underlined}COLUMNS${__reset}, ${__red}--table-right${__reset} ${__underlined}COLUMNS${__reset}\n";
