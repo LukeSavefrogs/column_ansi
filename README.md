@@ -51,6 +51,10 @@ It was all good, but it was taking way too long to load... In the attached tests
 After trying out this version in my production script the time used to display data **dropped from 30s to <1s**!!
 
 
+## Considerations
+### Why not use `bash`?
+Because each call to `bash`'s `read` is [very slow](https://unix.stackexchange.com/a/169765/348102).
+
 ## Screenshots
 #### Comparison with `column` command
 ![Comparison with column](https://user-images.githubusercontent.com/33452387/147605328-e786c713-afdb-4913-ab77-652098935b45.png)
