@@ -6,13 +6,14 @@
 column_ansi () {
 	(
 		local __name="${FUNCNAME[0]}";
-		local __version="1.2.0";
+		local __version="1.3.0";
 
 		__main () {
 			local _input_separator=" ";
 			local _output_separator="  ";
 			local _align_right="  ";
 			local _align_center="  ";
+			local _hidden_columns="0";
 
 			# From this excellent StackOverflow answer: https://stackoverflow.com/a/14203146/8965861
 			OPTIND=1;
@@ -35,6 +36,10 @@ column_ansi () {
 						_align_center="$2";
 						shift 2;
 					;;
+					-H | --table-hide)
+						_hidden_columns="$2";
+						shift 2;
+					;;
 					-t | --table)     # Does nothing - Only for compatibility reasons
 						shift;
 					;;
@@ -54,6 +59,7 @@ column_ansi () {
 			export PCOLUMN_OUTPUT_SEPARATOR="${_output_separator}";
 			export PCOLUMN_ALIGN_RIGHT="${_align_right}";
 			export PCOLUMN_ALIGN_CENTER="${_align_center}";
+			export PCOLUMN_HIDDEN_COLUMNS="${_hidden_columns}";
 
 			perl -e '
 				use strict;
@@ -79,6 +85,7 @@ column_ansi () {
 				my $OUTPUT_SEPARATOR = $ENV{"PCOLUMN_OUTPUT_SEPARATOR"};
 				my $ALIGN_RIGHT = $ENV{"PCOLUMN_ALIGN_RIGHT"};
 				my $ALIGN_CENTER = $ENV{"PCOLUMN_ALIGN_CENTER"};
+				my $HIDDEN_COLUMNS = $ENV{"PCOLUMN_HIDDEN_COLUMNS"};
 
 				# Default values for INPUT_SEPARATOR and OUTPUT_SEPARATOR
 				if ($INPUT_SEPARATOR eq ""){
@@ -91,23 +98,34 @@ column_ansi () {
 				# ALIGN_RIGHT must be a single number or a comma-separated list of numbers
 				# Then split ALIGN_RIGHT into an array and then convert it to an hash that will be used to check
 				#   if the column needs to be aligned to the right
-				$ALIGN_RIGHT =~ s/^\s+|\s+$//g;
+				$ALIGN_RIGHT =~ s/^\s+|\s+$//g; # Remove extra spaces
 				if ($ALIGN_RIGHT ne "" && not $ALIGN_RIGHT =~ /^[0-9]+(,[0-9]+)*$/) {
 					print STDERR "error: undefined column name '\''$ALIGN_RIGHT'\''\n";
 					exit 1;
 				}
-				my %ALIGN_RIGHT_HASH = map {$_ - 1 => 1} split(/,/, $ALIGN_RIGHT);
+				my %ALIGN_RIGHT_HASH = map {$_ - 1 => 1} split(/,/, $ALIGN_RIGHT); # Create a hash with (index-1) as key and 1 as value (just a truthy value) (https://it.perlmaven.com/transforming-a-perl-array-using-map)
 				
 				
 				# ALIGN_CENTER must be a single number or a comma-separated list of numbers
 				# Then split ALIGN_CENTER into an array and then convert it to an hash that will be used to check
-				#   if the column needs to be aligned to the right
-				$ALIGN_CENTER =~ s/^\s+|\s+$//g;
+				#   if the column needs to be aligned to the center
+				$ALIGN_CENTER =~ s/^\s+|\s+$//g; # Remove extra spaces
 				if ($ALIGN_CENTER ne "" && not $ALIGN_CENTER =~ /^[0-9]+(,[0-9]+)*$/) {
 					print STDERR "error: undefined column name '\''$ALIGN_CENTER'\''\n";
 					exit 1;
 				}
-				my %ALIGN_CENTER_HASH = map {$_ - 1 => 1} split(/,/, $ALIGN_CENTER);
+				my %ALIGN_CENTER_HASH = map {$_ - 1 => 1} split(/,/, $ALIGN_CENTER); # Create a hash with (index-1) as key and 1 as value (just a truthy value)
+				
+
+				# HIDDEN_COLUMNS must be a single number or a comma-separated list of numbers
+				# Then split HIDDEN_COLUMNS into an array and then convert it to an hash that will be used to check
+				#   if the column needs to be hidden
+				$HIDDEN_COLUMNS =~ s/^\s+|\s+$//g; # Remove extra spaces
+				if ($HIDDEN_COLUMNS ne "" && not $HIDDEN_COLUMNS =~ /^[0-9]+(,[0-9]+)*$/) {
+					print STDERR "error: undefined column name '\''$HIDDEN_COLUMNS'\''\n";
+					exit 1;
+				}
+				my %HIDDEN_COLUMNS_HASH = map {$_ - 1 => 1} split(/,/, $HIDDEN_COLUMNS); # Create a hash with (index-1) as key and 1 as value (just a truthy value)
 
 				# Save the STDIN into an Array, so that we can loop over it multiple times
 				my @stdin = <STDIN>;
@@ -137,9 +155,16 @@ column_ansi () {
 				foreach my $line (@stdin) {
 					$line =~ s/\r?\n?$//;
 					my @columns = split (/\Q$INPUT_SEPARATOR/, $line);
-					my $column_index = 0;
+					my $column_index = -1;
 
 					foreach my $column (@columns) {
+						$column_index++;
+
+						# 2022/04/09 - Hide the column if it is in HIDDEN_COLUMNS
+						if (exists $HIDDEN_COLUMNS_HASH{$column_index}) {
+							next;
+						}
+
 						my $__current_column_length = length(trim_ansi($column));
 						my $__current_column_padding = $column_widths->[$column_index] - $__current_column_length;
 						
@@ -160,7 +185,6 @@ column_ansi () {
 						if ($column_index != $#columns) {
 							print($OUTPUT_SEPARATOR);
 						}
-						$column_index++;
 					}
 					print("\n");
 				}
@@ -171,6 +195,7 @@ column_ansi () {
 			unset PCOLUMN_OUTPUT_SEPARATOR;
 			unset PCOLUMN_ALIGN_RIGHT;
 			unset PCOLUMN_ALIGN_CENTER;
+			unset PCOLUMN_HIDDEN_COLUMNS;
 		}
 
 		# shellckeck disable=SC2059
@@ -181,6 +206,7 @@ column_ansi () {
 			
 			local -r __bold="\033[1m";
 			local -r __underlined="\033[4m";
+			local -r __striked="\033[9m";
 			local -r __yellow="\033[0;33m";
 			local -r __red="\033[0;31m";
 			local -r __green="\033[0;32m";
@@ -191,7 +217,7 @@ column_ansi () {
 			printf "\n";
 			
 			printf "${__bold}USAGE${__reset}:\n"
-			printf "${__indent_1}${__yellow}%s${__reset} [-s ${__underlined}SEPARATOR${__reset}] [-o ${__underlined}SEPARATOR${__reset}] [-R ${__underlined}COLUMNS${__reset}] [-C ${__underlined}COLUMNS${__reset}]\n" "${__name}";
+			printf "${__indent_1}${__yellow}%s${__reset} [-s ${__underlined}SEPARATOR${__reset}] [-o ${__underlined}SEPARATOR${__reset}] [-R ${__underlined}COLUMNS${__reset}] [-H ${__underlined}COLUMNS${__reset}] [-C ${__underlined}COLUMNS${__reset}]\n" "${__name}";
 			printf "${__indent_1}${__yellow}%s${__reset} --help\n" "${__name}";
 			printf "\n";
 			
@@ -208,9 +234,13 @@ column_ansi () {
 			printf "${__indent_1}${__red}-R${__reset} ${__underlined}COLUMNS${__reset}, ${__red}--table-right${__reset} ${__underlined}COLUMNS${__reset}\n";
 			printf "${__indent_2}Right align text in the specified columns (comma-separated).\n";
 			printf "\n";
+			printf "${__indent_1}${__red}-H${__reset} ${__underlined}COLUMNS${__reset}, ${__red}--table-hide${__reset} ${__underlined}COLUMNS${__reset}\n";
+			printf "${__indent_2}Don't print specified columns. ${__striked}The special placeholder '-' maybe be used to hide all unnamed columns (see --table-columns).${__reset}\n";
+			printf "${__indent_2}${__bold}IMPORTANT${__reset}: The striked part of the description is still not implemented.\n";
+			printf "\n";
 			printf "${__indent_1}${__red}-C${__reset} ${__underlined}COLUMNS${__reset}, ${__red}--table-center${__reset} ${__underlined}COLUMNS${__reset}\n";
 			printf "${__indent_2}Center align text in the specified columns (comma-separated).\n";
-			printf "${__indent_2}This option is not present in the original column command.\n";
+			printf "${__indent_2}${__bold}IMPORTANT${__reset}: This option is not present in the original column command.\n";
 			printf "\n";
 			printf "${__indent_1}${__red}-h${__reset}, ${__red}--help${__reset}\n";
 			printf "${__indent_2}Display help text and exit.\n";
