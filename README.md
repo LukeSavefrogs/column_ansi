@@ -21,6 +21,10 @@ column_ansi --help
 -R COLUMNS, --table-right COLUMNS
         Right align text in the specified columns (comma-separated).
 
+-H COLUMNS, --table-hide COLUMNS
+        Don't print specified columns. The special placeholder '-' maybe be used to hide all unnamed columns (see --table-columns).
+        IMPORTANT: The striked part of the description is still not implemented.
+
 -C COLUMNS, --table-center COLUMNS
         Center align text in the specified columns (comma-separated). 
         This option is not present in the original column command.
@@ -33,6 +37,7 @@ column_ansi --help
 - Support for **ANSI color** codes and characters (output is aligned)
 - Same **syntax** and parameters as `column` (see `column_ansi --help` for more info)
 - **Right, Left and even Center alignment** for every column (1-based)!
+- Can hide columns
 
 ## TODO
 - Add option to keep or skip empty lines (right now it keeps them, which is different from the default behaviour of `column`);
