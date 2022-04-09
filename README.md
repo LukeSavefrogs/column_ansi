@@ -37,8 +37,8 @@ column_ansi --help
 - Support for **ANSI color** codes and characters (output is aligned)
 - Same **syntax** and parameters as `column` (see `column_ansi --help` for more info)
 - **Right, Left and even Center alignment** for every column (1-based)!
-- Can hide columns
-- Support for quoted fields and escaped quotes thanks to the `Text::ParseWords` module!
+- Support for **hidden columns**
+- Support for **quoted fields** and **escaped quotes** thanks to the `Text::ParseWords` module!
 
 
 ## TODO
