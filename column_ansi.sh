@@ -6,7 +6,7 @@
 column_ansi () {
 	(
 		local __name="${FUNCNAME[0]}";
-		local __version="1.3.0";
+		local __version="1.4.0";
 
 		__main () {
 			local _input_separator=" ";
@@ -64,6 +64,10 @@ column_ansi () {
 			perl -e '
 				use strict;
 				use warnings;
+
+				# By making use of the module "Text::ParseWords" we can abstract all the complexity of handling all the edge cases of CSV data, like quoted fields, escaped quotes, etc.
+				# Source: https://www.oreilly.com/library/view/perl-cookbook/1565922433/ch01s16.html
+				use Text::ParseWords;
 
 				sub trim_ansi {
 					my $__temp_string = $_[0];
@@ -134,7 +138,7 @@ column_ansi () {
 				# First loop: get the width of each column and save it in an array
 				foreach my $line (@stdin) {
 					$line =~ s/\r?\n?$//;
-					my @columns = split(/\Q$INPUT_SEPARATOR/, $line);
+					my @columns = quotewords($INPUT_SEPARATOR, 0, $line); # split(/\Q$INPUT_SEPARATOR/, $line);
 					my $column_index = 0;
 
 					foreach my $column (@columns) {
@@ -154,7 +158,7 @@ column_ansi () {
 				# Second loop: print the columns
 				foreach my $line (@stdin) {
 					$line =~ s/\r?\n?$//;
-					my @columns = split (/\Q$INPUT_SEPARATOR/, $line);
+					my @columns = quotewords($INPUT_SEPARATOR, 0, $line); # split (/\Q$INPUT_SEPARATOR/, $line);
 					my $column_index = -1;
 
 					foreach my $column (@columns) {
