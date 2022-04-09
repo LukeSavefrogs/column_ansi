@@ -67,7 +67,7 @@ Because each call to `bash`'s `read` is [very slow](https://unix.stackexchange.c
 ![Comparison with column](https://user-images.githubusercontent.com/33452387/147605328-e786c713-afdb-4913-ab77-652098935b45.png)
 
 #### Help page
-![Help page](https://user-images.githubusercontent.com/33452387/147606019-40c42e9e-ed65-4b7c-93a5-bd92a293afee.png)
+![Help page](https://user-images.githubusercontent.com/33452387/162549413-8ebbf962-c3a5-48ff-8573-2488c94e6e52.png)
 
 ## Tests
 In the following screenshot you can see (and try it yourself, by executing the attached `test_column_ansi.sh` script) 4 tests with the corresponding timings:
