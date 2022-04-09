@@ -3,7 +3,7 @@
 
 ## Syntax
 ```shell
-column_ansi [-s SEPARATOR] [-o SEPARATOR] [-R COLUMNS] [-C COLUMNS]
+column_ansi [-s SEPARATOR] [-o SEPARATOR] [-R COLUMNS] [-H COLUMNS] [-C COLUMNS]
 column_ansi --help
 ```
 
@@ -38,6 +38,8 @@ column_ansi --help
 - Same **syntax** and parameters as `column` (see `column_ansi --help` for more info)
 - **Right, Left and even Center alignment** for every column (1-based)!
 - Can hide columns
+- Support for quoted fields and escaped quotes thanks to the `Text::ParseWords` module!
+
 
 ## TODO
 - Add option to keep or skip empty lines (right now it keeps them, which is different from the default behaviour of `column`);
