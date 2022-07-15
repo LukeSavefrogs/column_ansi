@@ -142,6 +142,27 @@ if [[ $# -eq 0 ]]; then
 		printf "Test value${SEPARATOR}\033[1;35mColored output\033[0m${SEPARATOR}ABC${SEPARATOR}YES${SEPARATOR}Very long text\n";
 	);
 	sanitized_string="$(echo "${string}" | _trim_all_ANSI)"
+
+ 	string2="
+Current Date Time    :  \t
+ABC Reset            :  -- : \t
+ABC Reboot           :  --  \t
+Program Restart      :  -- : \t
+\f_
+\t
+Last    System Reboot: -- : \t\n
+Hostname             : dev-c1234some01 \tDevicename :
+ABC Master Server    :  \tOut-Nummer :
+Out Sync Protokoll   :  \tOS System  :
+SSH Authentication   :  \tTimeserver :
+IP-Address           :   \tGateway    :
+Subnetmask           :  \tDNS        :
+\t
+Out-Server           :  \tMain  check:
+System               :  \tABC Name   :
+UEFI System Check    :         \tBootorder  :
+System Up Time       :  \tRotation   :
+";
 	
 	printf "\033[1mCOLUMN (Original):\033[0m\n";
 	time echo "${string}" | column -t -s "${SEPARATOR}";
@@ -160,6 +181,11 @@ if [[ $# -eq 0 ]]; then
 
 	printf "\033[1mCOLUMN (Custom - mine):\033[0m\n";
 	time echo "${string}" | column_ansi -s "${SEPARATOR}";
+	printf "\n\n";
+
+
+	printf "\033[1mCOLUMN (Custom - mine): Empty Data without Ansi Codes\033[0m\n"
+	time echo -e -n "${string2}" | column_ansi -t -s $'\t'
 	printf "\n\n";
 else
 	# If script is NOT being sourced, then start the column_ansi function

@@ -1,9 +1,11 @@
 #!/bin/env bash
 
-# @description:    Perl version of column2 which works with color codes and is way faster than the bash version
-# @author:         Luca Salvarani
-# @source:         https://stackoverflow.com/a/38762316/8965861
-column_ansi () {
+# @description: Perl version of column2 which works with color codes and is way faster than the bash version
+# @author:      Luca Salvarani
+# @source:      https://stackoverflow.com/a/38762316/8965861
+# @git:         https://github.com/LukeSavefrogs/column_ansi
+column_ansi ()
+{
 	(
 		local __name="${FUNCNAME[0]}";
 		local __version="1.4.0";
@@ -71,7 +73,7 @@ column_ansi () {
 
 				sub trim_ansi {
 					my $__temp_string = $_[0];
-
+					if(!defined $__temp_string) { return ""; }
 					# Remove all Control Characters (color codes, carriage returns, bells and other characters)
 					$__temp_string =~ s/ \e[ #%()*+\-.\/]. |
 						\r | # Remove extra carriage returns also
@@ -142,6 +144,7 @@ column_ansi () {
 					my $column_index = 0;
 
 					foreach my $column (@columns) {
+						next if !defined $column;
 						$column = trim_ansi($column);
 
 						if (!defined $column_widths->[$column_index]) {
@@ -162,6 +165,7 @@ column_ansi () {
 					my $column_index = -1;
 
 					foreach my $column (@columns) {
+						next if !defined $column;
 						$column_index++;
 
 						# 2022/04/09 - Hide the column if it is in HIDDEN_COLUMNS
