@@ -163,6 +163,12 @@ System               :  \tABC Name   :
 UEFI System Check    :         \tBootorder  :
 System Up Time       :  \tRotation   :
 ";
+
+	string3='\\Backslash@"Quotes"@Backslash\\@Separator "@" in quotes@'"Separator '@' in quotes"
+	# Expect: \Backslash | "Quotes" | Backslash\ | Separator "@" in quotes | Separator '@' in quotes
+
+	string4='Dangling quotes "'"'"
+	# Expect: Dangling quotes "'
 	
 	printf "\033[1mCOLUMN (Original):\033[0m\n";
 	time echo "${string}" | column -t -s "${SEPARATOR}";
@@ -186,6 +192,16 @@ System Up Time       :  \tRotation   :
 
 	printf "\033[1mCOLUMN (Custom - mine): Empty Data without Ansi Codes\033[0m\n"
 	time echo -e -n "${string2}" | column_ansi -t -s $'\t'
+	printf "\n\n";
+
+
+	printf "\033[1mCOLUMN (Custom - mine): Backslashes and quotes\033[0m\n"
+	time echo -e -n "${string3}" | column_ansi -o " | " -s '@'
+	printf "\n\n";
+
+
+	printf "\033[1mCOLUMN (Custom - mine): Dangling quotes\033[0m\n"
+	time echo -e -n "${string4}" | column_ansi -o " | " -s '@'
 	printf "\n\n";
 else
 	# If script is NOT being sourced, then start the column_ansi function
