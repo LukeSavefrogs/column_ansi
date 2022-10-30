@@ -2,7 +2,7 @@
 
 # For the tests to work we need the function `column_ansi` available from the downloaded script.
 # Sourcing won't execute the function 
-source "../column_ansi.sh" || exit 1;
+source "../column_ansi.sh" || exit 1
 
 # @description:    Bash version of column (similar to the one from util-linux) which works with color codes
 # @author:         NORMAN GEIST
@@ -62,7 +62,7 @@ function column2 () (
 	function pad()
 	{
 	for ((i=0; i<$1; i++))
-	do 
+	do
 	echo -n " "
 	done
 	}
@@ -138,9 +138,9 @@ _trim_all_ANSI () {
 if [[ $# -eq 0 ]]; then
 	SEPARATOR=":"
 	string=$(
-		printf "First column${SEPARATOR}Second${SEPARATOR}3rd column${SEPARATOR}\033[0;31mErrors\033[0m${SEPARATOR}Notes\n"; 
-		printf "Test value${SEPARATOR}\033[1;35mColored output\033[0m${SEPARATOR}ABC${SEPARATOR}YES${SEPARATOR}Very long text\n";
-	);
+		printf "First column${SEPARATOR}Second${SEPARATOR}3rd column${SEPARATOR}\033[0;31mErrors\033[0m${SEPARATOR}Notes\n"
+		printf "Test value${SEPARATOR}\033[1;35mColored output\033[0m${SEPARATOR}ABC${SEPARATOR}YES${SEPARATOR}Very long text\n"
+	)
 	sanitized_string="$(echo "${string}" | _trim_all_ANSI)"
 
  	string2="
@@ -162,51 +162,51 @@ Out-Server           :  \tMain  check:
 System               :  \tABC Name   :
 UEFI System Check    :         \tBootorder  :
 System Up Time       :  \tRotation   :
-";
+"
 
 	string3='\\Backslash@"Quotes"@Backslash\\@Separator "@" in quotes@'"Separator '@' in quotes"
 	# Expect: \Backslash | "Quotes" | Backslash\ | Separator "@" in quotes | Separator '@' in quotes
 
 	string4='Dangling quotes "'"'"
 	# Expect: Dangling quotes "'
-	
-	printf "\033[1mCOLUMN (Original):\033[0m\n";
-	time echo "${string}" | column -t -s "${SEPARATOR}";
-	printf "\n\n";
+
+	printf "\033[1mCOLUMN (Original):\033[0m\n"
+	time echo "${string}" | column -t -s "${SEPARATOR}"
+	printf "\n\n"
 
 
-	printf "\033[1mCOLUMN (Original - Without ANSI):\033[0m\n";
-	time echo "${sanitized_string}" | column -t -s "${SEPARATOR}";
-	printf "\n\n";
+	printf "\033[1mCOLUMN (Original - Without ANSI):\033[0m\n"
+	time echo "${sanitized_string}" | column -t -s "${SEPARATOR}"
+	printf "\n\n"
 
 
-	printf "\033[1mCOLUMN (Custom - @NORMAN GEIST):\033[0m\n";
-	time echo "${string}" | column2 -s "${SEPARATOR}";
-	printf "\n\n";
+	printf "\033[1mCOLUMN (Custom - @NORMAN GEIST):\033[0m\n"
+	time echo "${string}" | column2 -s "${SEPARATOR}"
+	printf "\n\n"
 
 
-	printf "\033[1mCOLUMN (Custom - mine):\033[0m\n";
-	time echo "${string}" | column_ansi -s "${SEPARATOR}";
-	printf "\n\n";
+	printf "\033[1mCOLUMN (Custom - mine):\033[0m\n"
+	time echo "${string}" | column_ansi -s "${SEPARATOR}"
+	printf "\n\n"
 
 
 	printf "\033[1mCOLUMN (Custom - mine): Empty Data without Ansi Codes\033[0m\n"
 	time echo -e -n "${string2}" | column_ansi -t -s $'\t'
-	printf "\n\n";
+	printf "\n\n"
 
 
 	printf "\033[1mCOLUMN (Custom - mine): Backslashes and quotes\033[0m\n"
 	time echo -e -n "${string3}" | column_ansi -o " | " -s '@'
-	printf "\n\n";
+	printf "\n\n"
 
 
 	printf "\033[1mCOLUMN (Custom - mine): Dangling quotes\033[0m\n"
 	time echo -e -n "${string4}" | column_ansi -o " | " -s '@'
-	printf "\n\n";
+	printf "\n\n"
 else
 	# If script is NOT being sourced, then start the column_ansi function
 	# Source: https://stackoverflow.com/a/28776166/8965861
 	if ! (return 0 2>/dev/null); then
-		column_ansi "$@";
+		column_ansi "$@"
 	fi
 fi
