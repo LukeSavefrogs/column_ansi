@@ -165,7 +165,8 @@ System Up Time       :  \tRotation   :
 "
 
 	string3='\Backslash@"Quotes"@Backslash\@Separator "@" in quotes@'"Separator '@' in quotes"
-	# Expect: \Backslash | "Quotes" | Backslash\ | Separator "@" in quotes | Separator '@' in quotes
+	# Expect: \Backslash | "Quotes" | Backslash\ | Separator " | " in quotes | Separator ' | ' in quotes
+	# (Quotes should not be parsed - a separator should take effect as a separator even if in quotes)
 
 	string4='Dangling quotes "'"'"
 	# Expect: Dangling quotes "'

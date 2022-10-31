@@ -141,11 +141,17 @@ column_ansi ()
 				foreach my $line_ref (@stdin) {
 					my $line = $line_ref;
 					$line =~ s/\r?\n?$//;
+					$line =~ s/(\\+)/$1$1/g;		# escape backslashes
+					$line =~ s/"/\\"/g;				# escape double quotes
+					$line =~ s/'"'"'/\\'"'"'/g;		# escape single quotes - complicated as we are in a bash single-quoted string
 					my @columns = quotewords($INPUT_SEPARATOR, 1, $line); # split(/\Q$INPUT_SEPARATOR/, $line);
 					my $column_index = 0;
 
 					foreach my $column (@columns) {
 						next if !defined $column;
+						$column =~ s/\\'"'"'/'"'"'/g;	# unescape single quotes - complicated as we are in a bash single-quoted string
+						$column =~ s/\\"/"/g;			# unescape double quotes
+						$column =~ s/(\\+)\1/$1/g;		# unescape backslashes
 						$column = trim_ansi($column);
 
 						if (!defined $column_widths->[$column_index]) {
@@ -163,11 +169,17 @@ column_ansi ()
 				foreach my $line_ref (@stdin) {
 					my $line = $line_ref;
 					$line =~ s/\r?\n?$//;
+					$line =~ s/(\\+)/$1$1/g;		# escape backslashes
+					$line =~ s/"/\\"/g;				# escape double quotes
+					$line =~ s/'"'"'/\\'"'"'/g;		# escape single quotes - complicated as we are in a bash single-quoted string
 					my @columns = quotewords($INPUT_SEPARATOR, 1, $line); # split (/\Q$INPUT_SEPARATOR/, $line);
 					my $column_index = -1;
 
 					foreach my $column (@columns) {
 						next if !defined $column;
+						$column =~ s/\\'"'"'/'"'"'/g;	# unescape single quotes - complicated as we are in a bash single-quoted string
+						$column =~ s/\\"/"/g;			# unescape double quotes
+						$column =~ s/(\\+)\1/$1/g;		# unescape backslashes
 						$column_index++;
 
 						# 2022/04/09 - Hide the column if it is in HIDDEN_COLUMNS
