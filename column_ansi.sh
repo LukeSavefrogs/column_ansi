@@ -138,7 +138,8 @@ column_ansi ()
 				my $column_widths = [];
 
 				# First loop: get the width of each column and save it in an array
-				foreach my $line (@stdin) {
+				foreach my $line_ref (@stdin) {
+					my $line = $line_ref;
 					$line =~ s/\r?\n?$//;
 					my @columns = quotewords($INPUT_SEPARATOR, 1, $line); # split(/\Q$INPUT_SEPARATOR/, $line);
 					my $column_index = 0;
@@ -159,7 +160,8 @@ column_ansi ()
 				}
 
 				# Second loop: print the columns
-				foreach my $line (@stdin) {
+				foreach my $line_ref (@stdin) {
+					my $line = $line_ref;
 					$line =~ s/\r?\n?$//;
 					my @columns = quotewords($INPUT_SEPARATOR, 1, $line); # split (/\Q$INPUT_SEPARATOR/, $line);
 					my $column_index = -1;
