@@ -115,3 +115,13 @@ Very good project written entirely in **Bash** which has some similarities with 
 ### Links
 - [Author](https://github.com/SandersJ16)
 - [Project](https://github.com/SandersJ16/Bash-Better-Column-Command)
+
+## Special thanks
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
