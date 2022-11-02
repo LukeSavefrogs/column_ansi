@@ -123,7 +123,8 @@ Very good project written entirely in **Bash** which has some similarities with 
 <table>
   <tbody>
     <tr>
-      <td align="center"><a href="https://github.com/bartasha"><img src="https://avatars.githubusercontent.com/u/44841974?v=4" width="100px;" alt=""/><br /><sub><b>bartasha</b></sub></a></td>
+      <td align="center"><a href="https://github.com/bartasha"><img src="https://avatars.githubusercontent.com/u/44841974?v=4?s=100" width="100px;" alt="bartasha"/><br /><sub><b>bartasha</b></sub></a><br /><a href="https://github.com/LukeSavefrogs/column_ansi/commits?author=bartasha" title="Code">💻</a> <a href="https://github.com/LukeSavefrogs/column_ansi/issues?q=author%3Abartasha" title="Bug reports">🐛</a> <a href="https://github.com/LukeSavefrogs/column_ansi/commits?author=bartasha" title="Tests">⚠️</a></td>
+      <td align="center"><a href="https://github.com/LukasWillin"><img src="https://avatars.githubusercontent.com/u/14276298?v=4?s=100" width="100px;" alt="Lukas Willin"/><br /><sub><b>Lukas Willin</b></sub></a><br /><a href="https://github.com/LukeSavefrogs/column_ansi/issues?q=author%3ALukasWillin" title="Bug reports">🐛</a> <a href="https://github.com/LukeSavefrogs/column_ansi/commits?author=LukasWillin" title="Code">💻</a> <a href="https://github.com/LukeSavefrogs/column_ansi/commits?author=LukasWillin" title="Tests">⚠️</a></td>
     </tr>
   </tbody>
   <tfoot>
@@ -143,5 +144,5 @@ Very good project written entirely in **Bash** which has some similarities with 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
