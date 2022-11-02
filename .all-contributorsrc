@@ -21,7 +21,9 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/44841974?v=4",
       "profile": "https://github.com/bartasha",
       "contributions": [
-        "code"
+        "code",
+        "bug",
+        "test"
       ]
     }
   ],
