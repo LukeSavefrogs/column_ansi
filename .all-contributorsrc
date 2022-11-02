@@ -24,6 +24,17 @@
         "bug",
         "test"
       ]
+    },
+    {
+      "login": "LukasWillin",
+      "name": "Lukas Willin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14276298?v=4",
+      "profile": "https://github.com/LukasWillin",
+      "contributions": [
+        "bug",
+        "code",
+        "test"
+      ]
     }
   ],
   "commitConvention": "angular"
