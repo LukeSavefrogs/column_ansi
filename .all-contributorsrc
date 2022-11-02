@@ -35,6 +35,20 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "LukeSavefrogs",
+      "name": "Luca Salvarani",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33452387?v=4",
+      "profile": "https://www.linkedin.com/in/lucasalvarani/",
+      "contributions": [
+        "code",
+        "doc",
+        "maintenance",
+        "question",
+        "review",
+        "test"
+      ]
     }
   ],
   "commitConvention": "angular"
