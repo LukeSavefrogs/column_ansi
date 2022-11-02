@@ -15,6 +15,20 @@
   "skipCi": true,
   "contributors": [
     {
+      "login": "LukeSavefrogs",
+      "name": "Luca Salvarani",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33452387?v=4",
+      "profile": "https://www.linkedin.com/in/lucasalvarani/",
+      "contributions": [
+        "code",
+        "doc",
+        "maintenance",
+        "question",
+        "review",
+        "test"
+      ]
+    },
+    {
       "login": "bartasha",
       "name": "bartasha",
       "avatar_url": "https://avatars.githubusercontent.com/u/44841974?v=4",
