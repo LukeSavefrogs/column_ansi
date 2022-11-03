@@ -1,3 +1,8 @@
+![License](https://img.shields.io/github/license/LukeSavefrogs/column_ansi)
+![GitHub contributors (via allcontributors.org)](https://img.shields.io/github/all-contributors/LukeSavefrogs/column_ansi)
+![GitHub last commit](https://img.shields.io/github/last-commit/LukeSavefrogs/column_ansi)
+![GitHub issues](https://img.shields.io/github/issues/LukeSavefrogs/column_ansi)
+
 # ANSI-compatible `column`: `column_ansi`
 `Perl` version of `column` with support for ANSI color codes
 
@@ -123,9 +128,9 @@ Very good project written entirely in **Bash** which has some similarities with 
 <table>
   <tbody>
     <tr>
+      <td align="center"><a href="https://www.linkedin.com/in/lucasalvarani/"><img src="https://avatars.githubusercontent.com/u/33452387?v=4?s=100" width="100px;" alt="Luca Salvarani"/><br /><sub><b>Luca Salvarani</b></sub></a><br /><a href="https://github.com/LukeSavefrogs/column_ansi/commits?author=LukeSavefrogs" title="Code">💻</a> <a href="https://github.com/LukeSavefrogs/column_ansi/commits?author=LukeSavefrogs" title="Documentation">📖</a> <a href="#maintenance-LukeSavefrogs" title="Maintenance">🚧</a> <a href="#question-LukeSavefrogs" title="Answering Questions">💬</a> <a href="https://github.com/LukeSavefrogs/column_ansi/pulls?q=is%3Apr+reviewed-by%3ALukeSavefrogs" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/LukeSavefrogs/column_ansi/commits?author=LukeSavefrogs" title="Tests">⚠️</a></td>
       <td align="center"><a href="https://github.com/bartasha"><img src="https://avatars.githubusercontent.com/u/44841974?v=4?s=100" width="100px;" alt="bartasha"/><br /><sub><b>bartasha</b></sub></a><br /><a href="https://github.com/LukeSavefrogs/column_ansi/commits?author=bartasha" title="Code">💻</a> <a href="https://github.com/LukeSavefrogs/column_ansi/issues?q=author%3Abartasha" title="Bug reports">🐛</a> <a href="https://github.com/LukeSavefrogs/column_ansi/commits?author=bartasha" title="Tests">⚠️</a></td>
       <td align="center"><a href="https://github.com/LukasWillin"><img src="https://avatars.githubusercontent.com/u/14276298?v=4?s=100" width="100px;" alt="Lukas Willin"/><br /><sub><b>Lukas Willin</b></sub></a><br /><a href="https://github.com/LukeSavefrogs/column_ansi/issues?q=author%3ALukasWillin" title="Bug reports">🐛</a> <a href="https://github.com/LukeSavefrogs/column_ansi/commits?author=LukasWillin" title="Code">💻</a> <a href="https://github.com/LukeSavefrogs/column_ansi/commits?author=LukasWillin" title="Tests">⚠️</a></td>
-      <td align="center"><a href="https://www.linkedin.com/in/lucasalvarani/"><img src="https://avatars.githubusercontent.com/u/33452387?v=4?s=100" width="100px;" alt="Luca Salvarani"/><br /><sub><b>Luca Salvarani</b></sub></a><br /><a href="https://github.com/LukeSavefrogs/column_ansi/commits?author=LukeSavefrogs" title="Code">💻</a> <a href="https://github.com/LukeSavefrogs/column_ansi/commits?author=LukeSavefrogs" title="Documentation">📖</a> <a href="#maintenance-LukeSavefrogs" title="Maintenance">🚧</a> <a href="#question-LukeSavefrogs" title="Answering Questions">💬</a> <a href="https://github.com/LukeSavefrogs/column_ansi/pulls?q=is%3Apr+reviewed-by%3ALukeSavefrogs" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/LukeSavefrogs/column_ansi/commits?author=LukeSavefrogs" title="Tests">⚠️</a></td>
     </tr>
   </tbody>
   <tfoot>
@@ -143,7 +148,3 @@ Very good project written entirely in **Bash** which has some similarities with 
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
-<!-- ALL-CONTRIBUTORS-BADGE:END --> 
