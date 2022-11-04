@@ -1,8 +1,13 @@
 #!/bin/env bash
 
+# shellcheck disable=SC2155,SC2164
+declare -r SCRIPT_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )";
+
 # For the tests to work we need the function `column_ansi` available from the downloaded script.
-# Sourcing won't execute the function 
-source "../column_ansi.sh" || exit 1
+# Sourcing won't execute the function
+
+#shellcheck source=src/column_ansi.sh
+source "${SCRIPT_PATH}/../src/column_ansi.sh" || exit 1;
 
 # @description:    Bash version of column (similar to the one from util-linux) which works with color codes
 # @author:         NORMAN GEIST
