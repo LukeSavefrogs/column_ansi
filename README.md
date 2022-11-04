@@ -47,6 +47,7 @@ column_ansi --help
 
 
 ## TODO
+- Write better tests (maybe use a [testing framework](https://github.com/dodie/testing-in-bash)?)
 - Add option to keep or skip empty lines (right now it keeps them, which is different from the default behaviour of `column`);
 - Add option to remove colors and control characters from the output;
 - Make the choice of right/center alignment _explicit_ (so one cannot pass the same column index to both options)
