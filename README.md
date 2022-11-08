@@ -47,7 +47,7 @@ column_ansi --help
 
 
 ## TODO
-- Write **better tests** (maybe use a [testing framework](https://github.com/dodie/testing-in-bash)?)
+- Write **better tests** (maybe use a [testing framework](https://github.com/dodie/testing-in-bash)?) - _Work in progress..._
 - Add option to **keep or skip empty lines** (right now it keeps them, which is different from the default behaviour of `column`);
 - Add option to **remove colors** and control characters from the **output**;
 - Make the choice of **right/center alignment _explicit_** (so that one cannot pass the same column index to both options)
@@ -91,6 +91,12 @@ In the following screenshot you can see (and try it yourself, by executing the a
     Output is shown **as expected** and the **time** needed to render is way **similar** to the original `column` one.
 
 ![Example output](https://user-images.githubusercontent.com/33452387/147603917-5cfaafe1-7d21-4436-a2f7-b7d91ef58e7c.png)
+
+### Run tests
+To run tests ensure to have [`shellspec` installed](./CONTRIBUTING.md#installing-shellspec), then launch the following command:
+```shell
+shellspec --format d
+```
 
 # Other projects
 ## NORMAN GEIST - `ccolumn`

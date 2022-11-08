@@ -173,7 +173,7 @@ System Up Time       :  \tRotation   :
 	# Expect: \Backslash | "Quotes" | Backslash\ | Separator " | " in quotes | Separator ' | ' in quotes
 	# (Quotes should not be parsed - a separator should take effect as a separator even if in quotes)
 
-	string4='Dangling quotes "'"'"
+	# string4='Dangling quotes "'"'"
 	# Expect: Dangling quotes "'
 
 	printf "\033[1mCOLUMN (Original):\033[0m\n"
@@ -201,14 +201,14 @@ System Up Time       :  \tRotation   :
 	printf "\n\n"
 
 
-	printf "\033[1mCOLUMN (Custom - mine): Backslashes and quotes\033[0m\n"
-	time echo -n "${string3}" | column_ansi -o " | " -s '@'
-	printf "\n\n"
+	# printf "\033[1mCOLUMN (Custom - mine): Backslashes and quotes\033[0m\n"
+	# time echo -n "${string3}" | column_ansi -o " | " -s '@'
+	# printf "\n\n"
 
 
-	printf "\033[1mCOLUMN (Custom - mine): Dangling quotes\033[0m\n"
-	time echo -n "${string4}" | column_ansi -o " | " -s '@'
-	printf "\n\n"
+	# printf "\033[1mCOLUMN (Custom - mine): Dangling quotes\033[0m\n"
+	# time echo -n "${string4}" | column_ansi -o " | " -s '@'
+	# printf "\n\n"
 else
 	# If script is NOT being sourced, then start the column_ansi function
 	# Source: https://stackoverflow.com/a/28776166/8965861
