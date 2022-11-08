@@ -4,7 +4,7 @@
 
 Describe "The code..."
 	Include "${LIBRARY_PATH}"
-	It "should not reference uninitialized variables"
+	It "should not reference unset variables"
 		# Same as `set -e` and `set -u`
 		# https://github.com/shellspec/shellspec#set---set-shell-options
 		Set 'errexit:on' 'nounset:on'
