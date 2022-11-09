@@ -40,23 +40,23 @@ column_ansi ()
 				case $1 in
 					-s | --separator)
 						_input_separator="$2";
-						shift 2;
+						shift 2 || return 1;
 					;;
 					-o | --output-separator)
 						_output_separator="$2";
-						shift 2;
+						shift 2 || return 1;
 					;;
 					-R | --table-right)
 						_align_right="$2";
-						shift 2;
+						shift 2 || return 1;
 					;;
 					-C | --table-center)
 						_align_center="$2";
-						shift 2;
+						shift 2 || return 1;
 					;;
 					-H | --table-hide)
 						_hidden_columns="$2";
-						shift 2;
+						shift 2 || return 1;
 					;;
 					-t | --table)     # Does nothing - Only for compatibility reasons
 						shift;
@@ -67,7 +67,7 @@ column_ansi ()
 					;;
 					*)
 						POSITIONAL+=("$1");
-						shift;
+						shift || return 1;
 					;;
 				esac;
 			done;
