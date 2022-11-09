@@ -8,6 +8,9 @@
 # Set English language for all errors during tests
 LC_ALL=C
 
+# Export the locale to make it available in the subshells
+export LC_ALL
+
 # This callback function will be invoked only once before loading specfiles.
 spec_helper_precheck() {
   # Available functions: info, warn, error, abort, setenv, unsetenv
