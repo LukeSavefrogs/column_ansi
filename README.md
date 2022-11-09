@@ -47,7 +47,7 @@ column_ansi --help
 
 
 ## TODO
-- Parse CLI parameters directly from the Perl file (maybe _`Getopts:Long` package?_)
+- Parse CLI parameters directly from the Perl file (_maybe the [`Getopts:Long`](https://metacpan.org/pod/Getopt::Long) package?_)
 - Write **better tests** (maybe use a [testing framework](https://github.com/dodie/testing-in-bash)?) - _Work in progress..._
 - Add option to **keep or skip empty lines** (right now it keeps them, which is different from the default behaviour of `column`);
 - Add option to **remove colors** and control characters from the **output**;
