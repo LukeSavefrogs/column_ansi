@@ -2,7 +2,7 @@
 
 Include "src/column_ansi.sh"
 
-Describe "Edge cases:"
+Describe "Special characters and edge cases:"
 	# Checks if backslashes are not stripped from the output
 	# @see https://github.com/LukeSavefrogs/column_ansi/issues/6
 	It 'should handle backslashes'

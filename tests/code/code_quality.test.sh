@@ -2,7 +2,7 @@
 
 %const LIBRARY_PATH: src/column_ansi.sh
 
-Describe "The code..."
+Describe "Code quality tests:"
 	Include "${LIBRARY_PATH}"
 	It "should not reference unset variables"
 		# Same as `set -e` and `set -u`
