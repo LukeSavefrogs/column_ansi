@@ -1,3 +1,4 @@
+#!/bin/env perl
 use strict;
 use warnings;
 
@@ -5,6 +6,7 @@ use warnings;
 # Source: https://www.oreilly.com/library/view/perl-cookbook/1565922433/ch01s16.html
 use Text::ParseWords;
 
+# Source: https://unix.stackexchange.com/a/18979/348102
 sub trim_ansi {
 	my $__temp_string = $_[0];
 	if(!defined $__temp_string) { return ""; }
