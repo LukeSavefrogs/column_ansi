@@ -47,6 +47,7 @@ column_ansi --help
 
 
 ## TODO
+- Improve [`CONTRIBUTING.md` file](CONTRIBUTING.md)
 - Parse CLI parameters directly from the Perl file (_maybe the [`Getopts:Long`](https://metacpan.org/pod/Getopt::Long) package?_)
 - Write **better tests** (maybe use a [testing framework](https://github.com/dodie/testing-in-bash)?) - _Work in progress..._
 - Add option to **keep or skip empty lines** (right now it keeps them, which is different from the default behaviour of `column`);
