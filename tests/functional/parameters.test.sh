@@ -10,9 +10,9 @@ Include "${LIBRARY_PATH}"
 
 
 # Custom matcher used to find a string inside of a text containing ANSI escape codes.
-match_colored_text() {
+match_plain_text() {
 	# Source: https://unix.stackexchange.com/a/18979/348102
-	sanitized_text="$(echo "${match_colored_text:?}" | perl -e '
+	sanitized_text="$(echo "${match_plain_text:?}" | perl -e '
 		while (<>) {
 			s/ \e[ #%()*+\-.\/]. |
 				\r | # Remove extra carriage returns also
@@ -24,7 +24,22 @@ match_colored_text() {
 			print;
 		}
 	')"
-	echo "${sanitized_text}" | grep -q "$1"
+
+	echo "${sanitized_text}" | grep "$1" >/dev/null 2>&1
+}
+
+# Custom matcher used to find a string inside of a text containing ANSI escape codes.
+match_rich_text() {
+	if [ -z "${1}" ]; then
+		printf "ERROR: You cannot pass an empty string!\n" >&2;
+		return 1;
+	fi
+
+	# shellcheck disable=SC2059
+	rich_search_term="$(printf "$1")"
+	match="$(echo "${match_rich_text:-}" | perl -ne "print if /\Q${rich_search_term}/")"
+
+	[ -n "${match}" ]
 }
 
 
@@ -44,8 +59,12 @@ Context "Parameter testing:"
 			
 			# Here i use a custom matcher function because the text has ANSI colors by default,
 			# and this makes impossible to the `eq` matcher to find text.
-			The output should satisfy match_colored_text "OPTIONS:"
-			The output should satisfy match_colored_text "USAGE:"
+			The output should satisfy match_plain_text "OPTIONS:"
+
+			bold='\033[1m'
+			reset='\033[0m'
+			The output should satisfy match_rich_text "${bold}USAGE${reset}:"
+
 		End
 	End
 
