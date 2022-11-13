@@ -16,7 +16,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -30,5 +30,8 @@ jobs:
           echo "${HOME}/.local/bin" >> "$GITHUB_PATH"
           curl -fsSL https://git.io/shellspec | sh -s 0.28.1 -y
           
+      - name: (TEMPORARY FIX) Fix wrong permissions (damn windows!)
+        run: chmod 777 src/*
+        
       - name: Run tests for Bash
         run: shellspec --shell bash
