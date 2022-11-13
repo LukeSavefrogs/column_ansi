@@ -30,5 +30,5 @@ jobs:
           echo "${HOME}/.local/bin" >> "$GITHUB_PATH"
           curl -fsSL https://git.io/shellspec | sh -s 0.28.1 -y
           
-      - name: Run tests
-        run: shellspec
+      - name: Run tests for Bash
+        run: shellspec --shell bash
