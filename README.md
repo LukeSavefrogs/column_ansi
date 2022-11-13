@@ -3,6 +3,8 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/LukeSavefrogs/column_ansi)
 ![GitHub issues](https://img.shields.io/github/issues/LukeSavefrogs/column_ansi)
 
+[![CI](https://github.com/LukeSavefrogs/column_ansi/actions/workflows/test.yml/badge.svg)](https://github.com/LukeSavefrogs/column_ansi/actions/workflows/test.yml)
+
 # ANSI-compatible `column`: `column_ansi`
 `Perl` version of `column` with support for ANSI color codes
 
