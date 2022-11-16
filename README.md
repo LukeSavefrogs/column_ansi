@@ -1,7 +1,7 @@
-![License](https://img.shields.io/github/license/LukeSavefrogs/column_ansi)
-![GitHub contributors (via allcontributors.org)](https://img.shields.io/github/all-contributors/LukeSavefrogs/column_ansi)
-![GitHub last commit](https://img.shields.io/github/last-commit/LukeSavefrogs/column_ansi)
-![GitHub issues](https://img.shields.io/github/issues/LukeSavefrogs/column_ansi)
+[![License](https://img.shields.io/github/license/LukeSavefrogs/column_ansi)](./LICENSE)
+[![GitHub contributors (via allcontributors.org)](https://img.shields.io/github/all-contributors/LukeSavefrogs/column_ansi)](#contributors)
+[![GitHub last commit](https://img.shields.io/github/last-commit/LukeSavefrogs/column_ansi)](https://github.com/LukeSavefrogs/column_ansi/commits/main)
+[![GitHub issues](https://img.shields.io/github/issues/LukeSavefrogs/column_ansi)](https://github.com/LukeSavefrogs/column_ansi/issues)
 
 [![CI](https://github.com/LukeSavefrogs/column_ansi/actions/workflows/test.yml/badge.svg)](https://github.com/LukeSavefrogs/column_ansi/actions/workflows/test.yml)
 
