@@ -23,6 +23,9 @@
 # Set parallelism to 3 jobs
 --jobs 3
 
+# As of now, the entry point script is only ported on bash
+--shell bash
+
 # Do NOT treat warning as failure
 --no-warning-as-failure
 
