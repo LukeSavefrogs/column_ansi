@@ -29,9 +29,6 @@ jobs:
         run: |
           echo "${HOME}/.local/bin" >> "$GITHUB_PATH"
           curl -fsSL https://git.io/shellspec | sh -s 0.28.1 -y
-          
-      - name: (TEMPORARY FIX) Fix wrong permissions (damn windows!)
-        run: chmod 777 src/*
         
-      - name: Run tests for Bash
-        run: shellspec --shell bash
+      - name: Run tests
+        run: shellspec
