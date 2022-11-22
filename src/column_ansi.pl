@@ -2,6 +2,9 @@
 use strict;
 use warnings;
 
+# Set minimum Perl version to v5.6.0 (https://github.com/LukeSavefrogs/column_ansi/issues/2#issuecomment-1324001702)
+use 5.006;
+
 # By making use of the module "Text::ParseWords" we can abstract all the complexity of handling all the edge cases of CSV data, like quoted fields, escaped quotes, etc.
 # Source: https://www.oreilly.com/library/view/perl-cookbook/1565922433/ch01s16.html
 use Text::ParseWords;
