@@ -10,5 +10,6 @@ Describe "Structural tests:"
 	It "should provide the Perl file"
 		The path "src/column_ansi.pl" should be exist
 		The path "src/column_ansi.pl" should be file
+		The path "src/column_ansi.pl" should be executable
 	End
 End
