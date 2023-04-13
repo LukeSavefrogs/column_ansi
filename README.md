@@ -133,6 +133,21 @@ Very good project written entirely in **Bash** which has some similarities with 
 - [Author](https://github.com/SandersJ16)
 - [Project](https://github.com/SandersJ16/Bash-Better-Column-Command)
 
+## tecolicom - `App-ansicolumn`
+ANSI terminal sequence aware column command written in Perl (_not tested_).
+
+#### Pro
+- Has both `fill by rows` and `fill by columns` options from the original `column` command;
+- Good documentation
+- Lots of additional options
+
+#### Cons
+_Not enough data_
+
+### Links
+- [Author](https://github.com/kaz-utashiro)
+- [Project](https://github.com/tecolicom/App-ansicolumn)
+
 ## Contributors
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
