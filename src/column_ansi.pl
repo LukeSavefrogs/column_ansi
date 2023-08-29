@@ -28,6 +28,12 @@ my $OUTPUT_SEPARATOR = $ENV{"PCOLUMN_OUTPUT_SEPARATOR"};
 my $ALIGN_RIGHT = $ENV{"PCOLUMN_ALIGN_RIGHT"};
 my $ALIGN_CENTER = $ENV{"PCOLUMN_ALIGN_CENTER"};
 my $HIDDEN_COLUMNS = $ENV{"PCOLUMN_HIDDEN_COLUMNS"};
+my $IGNORE_LINE_PREFIX = $ENV{"PCOLUMN_IGNORE_LINE_PREFIX"};
+my $LENGTH_IGNORE_LINE_PREFIX = length($IGNORE_LINE_PREFIX);
+my $IS_IGNORE_LINE_PREFIX_SET = 0;
+if ($LENGTH_IGNORE_LINE_PREFIX ne 0){
+	$IS_IGNORE_LINE_PREFIX_SET = 1;
+}
 
 # Default values for INPUT_SEPARATOR and OUTPUT_SEPARATOR
 if ($INPUT_SEPARATOR eq ""){
@@ -77,6 +83,10 @@ my $column_widths = [];
 foreach my $line_ref (@stdin) {
 	my $line = $line_ref;
 	$line =~ s/\r?\n?$//;
+	# Ignore line if prefixed with argument from `-i`
+	if ($IS_IGNORE_LINE_PREFIX_SET && (rindex $line, $IGNORE_LINE_PREFIX, 0) eq 0) {
+		next;
+	}
 	$line =~ s/(\\+)/$1$1/g;		# escape backslashes
 	$line =~ s/"/\\"/g;				# escape double quotes
 	$line =~ s/'/\\'/g;		        # escape single quotes
@@ -105,6 +115,12 @@ foreach my $line_ref (@stdin) {
 foreach my $line_ref (@stdin) {
 	my $line = $line_ref;
 	$line =~ s/\r?\n?$//;
+	# Print as is if prefixed with argument from `-i` but ommit the prefix
+	if ($IS_IGNORE_LINE_PREFIX_SET && (rindex $line, $IGNORE_LINE_PREFIX, 0) eq 0) {
+		print(substr $line, $LENGTH_IGNORE_LINE_PREFIX);
+		print("\n");
+		next;
+	}
 	$line =~ s/(\\+)/$1$1/g;		# escape backslashes
 	$line =~ s/"/\\"/g;				# escape double quotes
 	$line =~ s/'/\\'/g;		        # escape single quotes

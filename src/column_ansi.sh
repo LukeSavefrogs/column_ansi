@@ -32,6 +32,7 @@ column_ansi ()
 			local _align_right="  ";
 			local _align_center="  ";
 			local _hidden_columns="0";
+			local _ignore_line_prefix="";
 
 			# From this excellent StackOverflow answer: https://stackoverflow.com/a/14203146/8965861
 			OPTIND=1;
@@ -61,6 +62,10 @@ column_ansi ()
 					-t | --table)     # Does nothing - Only for compatibility reasons
 						shift;
 					;;
+					-i | --ignore-line-prefix)
+						_ignore_line_prefix="$2";
+						shift 2 || return 1;
+					;;
 					-\? | -h |--help)
 						__usage
 						return 0;
@@ -78,16 +83,17 @@ column_ansi ()
 			export PCOLUMN_ALIGN_RIGHT="${_align_right}";
 			export PCOLUMN_ALIGN_CENTER="${_align_center}";
 			export PCOLUMN_HIDDEN_COLUMNS="${_hidden_columns}";
+			export PCOLUMN_IGNORE_LINE_PREFIX="${_ignore_line_prefix}";
 
 			# Call the actual Perl program
 			perl "${__script_path}column_ansi.pl" || return 1;
-
 
 			unset PCOLUMN_INPUT_SEPARATOR;
 			unset PCOLUMN_OUTPUT_SEPARATOR;
 			unset PCOLUMN_ALIGN_RIGHT;
 			unset PCOLUMN_ALIGN_CENTER;
 			unset PCOLUMN_HIDDEN_COLUMNS;
+			unset PCOLUMN_IGNORE_LINE_PREFIX;
 		}
 
 		# shellckeck disable=SC2059
@@ -124,15 +130,19 @@ column_ansi ()
 			printf "${__indent_2}Specify the columns delimiter for table output (default is two spaces).\n";
 			printf "\n";
 			printf "${__indent_1}${__red}-R${__reset} ${__underlined}COLUMNS${__reset}, ${__red}--table-right${__reset} ${__underlined}COLUMNS${__reset}\n";
-			printf "${__indent_2}Right align text in the specified columns (comma-separated).\n";
+			printf "${__indent_2}Right align text in the specified columns (comma-separated, 1 based array).\n";
 			printf "\n";
 			printf "${__indent_1}${__red}-H${__reset} ${__underlined}COLUMNS${__reset}, ${__red}--table-hide${__reset} ${__underlined}COLUMNS${__reset}\n";
 			printf "${__indent_2}Don't print specified columns. ${__striked}The special placeholder '-' maybe be used to hide all unnamed columns (see --table-columns).${__reset}\n";
 			printf "${__indent_2}${__bold}IMPORTANT${__reset}: The striked part of the description is still not implemented.\n";
 			printf "\n";
 			printf "${__indent_1}${__red}-C${__reset} ${__underlined}COLUMNS${__reset}, ${__red}--table-center${__reset} ${__underlined}COLUMNS${__reset}\n";
-			printf "${__indent_2}Center align text in the specified columns (comma-separated).\n";
+			printf "${__indent_2}Center align text in the specified columns (comma-separated, 1 based array).\n";
 			printf "${__indent_2}${__bold}IMPORTANT${__reset}: This option is not present in the original column command.\n";
+			printf "\n";
+			printf "${__indent_1}${__red}-i${__reset}, ${__red}--ignore-line-prefix${__reset}\n";
+			printf "${__indent_2}Print line as is and do not treat it as tabular content.\n";
+			printf "${__indent_2}This option allows for table sections and titles while keeping columns aligned.\n";
 			printf "\n";
 			printf "${__indent_1}${__red}-h${__reset}, ${__red}--help${__reset}\n";
 			printf "${__indent_2}Display help text and exit.\n";

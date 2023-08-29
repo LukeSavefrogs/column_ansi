@@ -173,6 +173,13 @@ System Up Time       :  \tRotation   :
 	# Expect: \Backslash | "Quotes" | Backslash\ | Separator " | " in quotes | Separator ' | ' in quotes
 	# (Quotes should not be parsed - a separator should take effect as a separator even if in quotes)
 
+	string4_mixed_columns_and_ignored_lines="
+Date & Time\t: $(date '+%Y-%m-%d %H:%M:%S')\tOther Date & Time\t: $(date '+%Y%m%d%H%M')
+\i -- This is an informative line about above dates. Note that it's not used to align tabular content.
+More Date & Time\t: $(date --utc '+%Y-%m-%dT%H:%M:%S.%3N%z')\tRunning out of Date & Time\t: $(date '+%Y-%m-%dT%H:%M:%S.%3N%z')
+\i -- You might find that above dates are kind of same same but different and that this notice is pointless apart from testing purposes.
+";
+
 	# string4='Dangling quotes "'"'"
 	# Expect: Dangling quotes "'
 
@@ -196,10 +203,13 @@ System Up Time       :  \tRotation   :
 	printf "\n\n"
 
 
-	printf "\033[1mCOLUMN (Custom - mine): Empty Data without Ansi Codes\033[0m\n"
+	printf "\033[1mCOLUMN (Custom - mine): Empty Data without Ansi Codes:\033[0m\n"
 	time echo -e -n "${string2}" | column_ansi -t -s $'\t'
 	printf "\n\n"
 
+	printf "\033[1mCOLUMN (Custom - mine): Mixed tabular data with inline comments:\033[0m\n"
+	time echo -e -n "${string4_mixed_columns_and_ignored_lines}" | column_ansi -t -i '\i' -s $'\t';
+	printf "\n\n"
 
 	# printf "\033[1mCOLUMN (Custom - mine): Backslashes and quotes\033[0m\n"
 	# time echo -n "${string3}" | column_ansi -o " | " -s '@'
