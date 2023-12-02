@@ -27,8 +27,8 @@ column_ansi ()
 		fi
 
 		__main () {
-			local _input_separator=" ";
-			local _output_separator="  ";
+			local _input_separator="";
+			local _output_separator="";
 			local _align_right="  ";
 			local _align_center="  ";
 			local _hidden_columns="0";
