@@ -68,6 +68,42 @@ Context "Parameter testing:"
 		End
 	End
 
+	Describe "should have ignore option..."
+		input_text="$(
+			%text
+			#|First SecondVeryVeryVeryVeryLongText Third
+			#|\i Ignored Line
+			#|First SecondShortText Third
+		)"
+
+		expected_output_param_i="$(
+			%text
+			#|First  SecondVeryVeryVeryVeryLongText  Third
+			#| Ignored Line
+			#|First  SecondShortText                 Third
+		)"
+
+		Parameters
+			# By default the text gets aligned at the LEFT of the column.
+			# The 2nd line should be skipped and not treated as table content.
+			"-i '\i'" 				    "${input_text}" "${expected_output_param_i}"
+			"--ignore-line-prefix '\i'" "${input_text}" "${expected_output_param_i}"
+		End
+
+		Example "$1"
+			Set 'errexit:on'
+
+			Data "$2"
+			When call eval timeout 3 "${LIBRARY_PATH}" $1
+			The status should be success
+			if [ -n "$3" ]; then
+				The output should eq "$3"
+			else
+				The output should be defined
+			fi
+		End
+	End
+
 	Describe "should SUCCEED when passed the right arguments:"
 		long_input_text="$(
 			%text
